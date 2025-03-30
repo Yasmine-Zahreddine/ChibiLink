@@ -18,3 +18,14 @@ class ChibiLinkURLS(Base):
     one_time_click = Column(Boolean, default=False, nullable=False)
     expiration_date = Column(TIMESTAMP(timezone=True), nullable=True)
     new_url = Column(String, nullable=False)
+
+    @staticmethod
+    def from_dict(data: dict):
+        return ChibiLinkURLS(
+            original_url=data.get("original_url"),
+            short_code=data.get("short_code"),
+            clicks=data.get("clicks", 0),
+            one_time_click=data.get("one_time_click", False),
+            expiration_date=data.get("expiration_date"),
+            new_url=data.get("new_url")
+        )

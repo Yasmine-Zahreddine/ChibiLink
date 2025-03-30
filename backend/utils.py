@@ -10,6 +10,6 @@ def generate_short_code(url:string, length: int = 6):
 
 def validate_url(url: str):
     if not url.startswith(("http://", "https://")):
-        raise ValueError("Invalid URL format")
+        raise False
     return True
 

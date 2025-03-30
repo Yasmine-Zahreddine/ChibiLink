@@ -12,7 +12,7 @@ class ChibiLinkURLS(Base):
     url_pk = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     created_at = Column(TIMESTAMP(timezone=True), server_default=text("now()"))
     updated_at = Column(TIMESTAMP(timezone=True), server_default=text("now()"), onupdate=text("now()"))
-    original_url = Column(String, nullable=False)
+    original_url = Column(String, nullable=False, unique=True)
     short_code = Column(String, nullable=False, unique=True)
     clicks = Column(Integer, default=0, nullable=False)
     one_time_click = Column(Boolean, default=False, nullable=False)

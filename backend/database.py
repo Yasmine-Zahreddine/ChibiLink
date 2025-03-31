@@ -1,5 +1,4 @@
 from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, scoped_session
 import os 
 from dotenv import load_dotenv
@@ -36,26 +35,36 @@ def session_manager(mainCall: bool = True):
 
 
 def get_shortened_url(url:str, base_url: str, expiration_date , one_time_click: bool = False, length: int = None, mainCall: bool = True):
-    with session_manager(mainCall) as session:
-        if validate_url(url): 
-            existing_url = session.query(ChibiLinkURLS).filter(ChibiLinkURLS.original_url == url , ChibiLinkURLS.expiration_date > datetime.now()).first()
-            if existing_url:
-                logger.info(f"URL already exists: {url}")
-                return existing_url.new_url
-            short_code = generate_short_code(url, length)
-            new_url = f"{base_url}/{short_code}"
-            data = {
-                "original_url": url,
-                "short_code": short_code,
-                "new_url": new_url,
-                "clicks": 0,
-                "one_time_click": one_time_click,
-                "expiration_date": expiration_date, 
-            }
-            new_url_entry = ChibiLinkURLS.from_dict(data)
-            session.add(new_url_entry)
-            session.commit()
-        return new_url
+    try: 
+        with session_manager(mainCall) as session:
+            print("entering get_shortened_url")
+            if validate_url(url): 
+                logger.info(f"Valid URL: {url}")
+                existing_url = session.query(ChibiLinkURLS).filter(ChibiLinkURLS.original_url == url , ChibiLinkURLS.expiration_date > datetime.now()).first()
+                if existing_url:
+                    logger.info(f"URL already exists: {url}")
+                    return existing_url.new_url
+                short_code = generate_short_code(url, length)
+                new_url = f"{base_url}{short_code}"
+                data = {
+                    "original_url": url,
+                    "short_code": short_code,
+                    "new_url": new_url,
+                    "clicks": 0,
+                    "one_time_click": one_time_click,
+                    "expiration_date": expiration_date, 
+                }
+                new_url_entry = ChibiLinkURLS.from_dict(data)
+                logger.info(f"Creating new URL entry: {new_url}")
+                try:
+                    session.add(new_url_entry)
+                    session.commit()
+                except Exception as e:
+                    logger.error(f"Error adding new URL entry: {e}")
+                logger.info(f"New URL entry created: {new_url}")
+                return new_url
+    except Exception as e:
+        logger.error(f"Error in get_shortened_url: {e}")
     
 
 def get_original_url(short_code: str, mainCall: bool = True):
@@ -64,8 +73,25 @@ def get_original_url(short_code: str, mainCall: bool = True):
         if url_entry:
             if url_entry.one_time_click:
                 session.delete(url_entry)
-            return url_entry.original_url
+            return url_entry
         else:
             logger.info(f"Short code not found: {short_code}")
             return None
 
+
+def delete_url_entry(url_pk:str):
+    with session_manager() as session: 
+        url_entry = session.query(ChibiLinkURLS).filter(ChibiLinkURLS.url_pk == url_pk).first()
+        if url_entry: 
+            session.delete(url_entry)
+            session.commit()
+
+
+def add_url_click(url_pk:str):
+    with session_manager() as session: 
+        url_entry = session.query(ChibiLinkURLS).filter(ChibiLinkURLS.url_pk == url_pk).first()
+        if url_entry: 
+            url_entry.clicks += 1
+            session.commit()
+            return url_entry
+        return None

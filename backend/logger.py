@@ -3,7 +3,7 @@ from logging.handlers import RotatingFileHandler
 import os
 from typing import cast
 
-LOGS_DIR = "backend/logs"
+LOGS_DIR = "logs"
 os.makedirs(LOGS_DIR, exist_ok=True)
 
 LOG_FILE = os.path.join(LOGS_DIR, "app.log")

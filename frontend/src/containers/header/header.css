@@ -5,7 +5,7 @@
     align-items: center;
     width: 100%;
     font-family: var(--font-family);
-    margin-top: 120px;
+    margin-top: 100px;
     margin-bottom: 100px;
 }
 
@@ -42,11 +42,21 @@
     .header_img img{
         width: 300px;
     }
+    .header_shortener{
+        width: 80%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 }
 
 @media screen and (max-width: 480px) {
     .header_img img{
         width: 200px;
+    }
+    .header_shortener{
+        width: 90%;
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 }
 

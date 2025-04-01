@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 import models
 from fastapi.responses import RedirectResponse
 import database
@@ -6,6 +7,13 @@ from datetime import datetime, timezone
 
 app = FastAPI()
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"], 
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.post("/shorten")
 async def create_short_url(request: Request):
@@ -16,6 +24,8 @@ async def create_short_url(request: Request):
     length = data.get("length", 6)
     base_url = request.base_url
     short_url = database.get_shortened_url(url=url, base_url=base_url, expiration_date=expiration_date, one_time_click=one_time_click, length=length)
+    if not short_url:
+        return {"error": "Invalid URL"}
     return {"new_url": short_url}
 
 

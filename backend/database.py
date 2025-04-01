@@ -63,6 +63,9 @@ def get_shortened_url(url:str, base_url: str, expiration_date , one_time_click: 
                     logger.error(f"Error adding new URL entry: {e}")
                 logger.info(f"New URL entry created: {new_url}")
                 return new_url
+            else:
+                logger.error(f"Invalid URL: {url}")
+                return None
     except Exception as e:
         logger.error(f"Error in get_shortened_url: {e}")
     

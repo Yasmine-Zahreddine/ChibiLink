@@ -1,7 +1,7 @@
 .shortenURL{
     display: flex;
-    flex-direction: row;
-    width: 100%;
+    flex-direction: column;
+    align-items: center;
 }
 
 .shortenURL_input{
@@ -9,7 +9,6 @@
     border-radius: 10px;
     border: 1px solid var(--title-color-transparent);
     padding: 8px 12px;
-    margin-right: 20px;
     color: var(--outline-color);
     font-family: var(--font-family);
     transition: all 0.3s ease;
@@ -29,7 +28,108 @@
 }
 
 .shortenURL_button{
-    width: 30%;
+    width: 50%;
+}
+.option-group-container{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    flex-direction: column;
+    width: 70%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+ 
+
+}
+
+  .option-group {
+    display: flex;
+    gap: 50px;
+    font-family: var(--title-font-family);
+    color: var(--title-color);
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .option-input {
+    padding: 4px 8px;
+    border-radius: 10px;
+    border: 1px solid var(--title-color-transparent);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+  
+  .checkbox-input {
+    margin-right: 20px;
+    accent-color: var(--title-color);
+  }
+
+.option-input::placeholder {
+    color: #f25278;
+    opacity: 0.6;
+}
+
+.option-input:focus{
+    outline: none;
+    box-shadow: 0 4px 8px rgba(242, 82, 120, 0.2);
+    transform: translateY(-1px);
+
+}
+
+.option-input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(316deg) brightness(118%) contrast(119%);
+    cursor: pointer;
+}
+
+.option-input[type="datetime-local"]::-webkit-datetime-edit {
+    color: var(--text-color);
+}
+
+.option-input[type="datetime-local"]::-webkit-datetime-edit-fields-wrapper {
+    color: var(--text-color);
+}
+
+.option-input[type="datetime-local"]::-webkit-datetime-edit-text {
+    color: var(--title-color);
+    padding: 0 0.3em;
+}
+
+.option-input[type="datetime-local"]::-webkit-datetime-edit-month-field,
+.option-input[type="datetime-local"]::-webkit-datetime-edit-day-field,
+.option-input[type="datetime-local"]::-webkit-datetime-edit-year-field,
+.option-input[type="datetime-local"]::-webkit-datetime-edit-hour-field,
+.option-input[type="datetime-local"]::-webkit-datetime-edit-minute-field,
+.option-input[type="datetime-local"]::-webkit-datetime-edit-second-field  
+    {
+    color: var(--title-color);
+}
+
+.option-input[type="number"] {
+    color: var(--title-color);
+    font-weight: 500;
+}
+
+.option-input[type="number"]::-webkit-inner-spin-button,
+.option-input[type="number"]::-webkit-outer-spin-button {
+    opacity: 1;
+    background: var(--title-color-transparent);
+    border-radius: 5px;
+    cursor: pointer;
+    height: 50%;
+}
+
+.option-input[type="number"]::-webkit-inner-spin-button:hover,
+.option-input[type="number"]::-webkit-outer-spin-button:hover {
+    background: var(--title-color);
+}
+
+.error-message {
+    color: #ff0033;
+    font-size: 14px;
+    margin-top: 10px;
+    font-family: var(--font-family);
 }
 
 @media screen and (max-width: 600px) {
@@ -38,11 +138,18 @@
         width: 100%;
     }
     .shortenURL_input{
-        width: 100%;
+        width: 94%;
         margin-right: 0px;
         margin-bottom: 10px;
     }
     .shortenURL_button{
+        width: 100%;
+    }
+    .url-options {
+        gap: 20px;
+    }
+      
+    .option-group {
         width: 100%;
     }
 }

@@ -1,9 +1,16 @@
-
 :root{
   --bg-color: #fbe6ec;
   --title-color: #f25278;
+  --title-color-transparent: #f25277c2;
+  --outline-color: #79001d;
+  --text-color: #34181e;
+  --font-family: 'Poppins', sans-serif;
+  --title-font-family: 'Comfortaa', cursive;
 }
 
 body { 
   background-color: var(--bg-color);
+}
+body::-webkit-scrollbar {
+  display: none;
 }

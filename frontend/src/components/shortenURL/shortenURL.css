@@ -28,7 +28,7 @@
 }
 
 .shortenURL_button{
-    width: 50%;
+    width: 55%;
 }
 .option-group-container{
     display: flex;
@@ -115,7 +115,7 @@
 .option-input[type="number"]::-webkit-outer-spin-button {
     opacity: 1;
     background: var(--title-color-transparent);
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     height: 50%;
 }
@@ -145,11 +145,13 @@
     .shortenURL_button{
         width: 100%;
     }
-    .url-options {
-        gap: 20px;
+    .option-group-container {
+        width: 100%;
+        padding: 0%;
     }
       
     .option-group {
         width: 100%;
+        gap:10px;
     }
 }

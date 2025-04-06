@@ -19,6 +19,7 @@ const Footer = () => {
         <div className='footer-links_div'>
           <h4>Usage Guidelines</h4>
           <p>No illegal content</p>
+          <p>Maximum 5 requests per minute</p>
           <p>Only HTTPS/HTTP URLs supported</p>
         </div>
         <div className='footer-links_div'>

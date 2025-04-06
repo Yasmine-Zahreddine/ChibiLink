@@ -45,6 +45,14 @@ function ShortenURL() {
       });
 
       if (!response.ok) {
+        if (response.status === 402) {
+          setError('URL blocked due to suspicious content. Please try another URL.');
+          return;
+        }
+        if (response.status === 429) {
+          setError('Too many requests. Please try again later.');
+          return;
+        }
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 

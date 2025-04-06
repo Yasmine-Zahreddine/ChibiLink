@@ -1,11 +1,13 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 import models
 from fastapi.responses import RedirectResponse
 import database
 from datetime import datetime, timezone
+import security
 
 app = FastAPI()
+rate_limiter = security.RateLimiter(max_requests=5, window=60)
 
 app.add_middleware(
     CORSMiddleware,
@@ -17,11 +19,17 @@ app.add_middleware(
 
 @app.post("/shorten")
 async def create_short_url(request: Request):
+    await rate_limiter.check_rate_limit(request)
     data = await request.json()
     url = data.get("url")
     expiration_date = data.get("expiration_date")
     one_time_click = data.get("one_time_click", False)
     length = data.get("length", 6)
+    if not security.protect_against_spam(url):
+        raise HTTPException(
+            status_code=402,
+            detail="URL blocked due to suspicious content"
+        )
     base_url = request.base_url
     short_url = database.get_shortened_url(url=url, base_url=base_url, expiration_date=expiration_date, one_time_click=one_time_click, length=length)
     if not short_url:

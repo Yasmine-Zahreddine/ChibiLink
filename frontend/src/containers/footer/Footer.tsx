@@ -1,36 +1,35 @@
 import './footer.css'
 import logo from '../../assets/logo_dark.png'
+
 const Footer = () => {
   return (
-    <div className='gpt4_footer section_padding'>
-      <div className='gpt4_footer-links'>
-        <div className='gpt4_footer-links_logo'>
-          <img src={logo}/>
-          <p>Crechterwoord K12 182 DK Alknjkcb, All Rights Reserved</p>
+    <div className='footer section_padding'>
+      <div className='footer-links'>
+        <div className='footer-links_logo'>
+          <img src={logo} alt="ChibiLink Logo"/>
+          <p>Where long URLs become pocket-sized links</p>
         </div>
-        <div className='gpt4_footer-links_div'>
-          <h4>Links</h4>
-          <p>Observations</p>
-          <p>Social Media</p>
-          <p>Content</p>
-          <p>About</p>
+        <div className='footer-links_div'>
+          <h4>About ChibiLink</h4>
+          <p>A simple and fast URL shortener</p>
+          <p>No registration required</p>
+          <p>Free to use</p>
+          <p>Currently in development - more features coming soon!</p>
         </div>
-        <div className='gpt4_footer-links_div'>
-          <h4>Company</h4>
-          <p>Terms & Conditions</p>
-          <p>Privacy Policy</p>
-          <p>Contact</p>
+        <div className='footer-links_div'>
+          <h4>Usage Guidelines</h4>
+          <p>No illegal content</p>
+          <p>Only HTTPS/HTTP URLs supported</p>
         </div>
-        <div className='gpt4_footer-links_div'>
-          <h4>Get in touch</h4>
-          <p>+00000000</p>
-          <p>Follow us on Twitter</p>
-          <p>connect on LinkedIn</p>
-          <p>info@gpt4ai.com</p>
+        <div className='footer-links_div'>
+          <h4>Contact</h4>
+          <p>Developer: Yasmine Zahreddine</p>
+          <p><a href="mailto:zahreddineyasmine@gmail.com">zahreddineyasmine@gmail.com</a></p>
+          <p><a href="https://github.com/Yasmine-Zahreddine" target="_blank" rel="noopener noreferrer">Github</a></p>
         </div>
       </div>
-      <div className='gpt4_footer-copyright'>
-        <p>© 2024 GPT-4. All rights reserved.</p>
+      <div className='footer-copyright'>
+        <p>© {new Date().getFullYear()} ChibiLink. All rights reserved.</p>
       </div>
     </div>
   )

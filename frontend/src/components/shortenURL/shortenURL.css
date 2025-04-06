@@ -45,7 +45,7 @@
   .option-group {
     display: flex;
     gap: 50px;
-    font-family: var(--title-font-family);
+    font-family: var(--font-family);
     color: var(--title-color);
     margin-top: 10px;
     margin-bottom: 10px;

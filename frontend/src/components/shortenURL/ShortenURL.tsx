@@ -83,18 +83,7 @@ function ShortenURL() {
             />
           </div>
 
-          <div className='option-group'>
-            <label htmlFor="oneTime">
-              <input
-                type="checkbox"
-                id="oneTime"
-                checked={oneTimeClick}
-                onChange={(e) => setOneTimeClick(e.target.checked)}
-                className='checkbox-input'
-              />
-              One-time click only
-            </label>
-          </div>
+          
 
           <div className='option-group'>
             <label htmlFor="length">URL Length:</label>
@@ -108,6 +97,18 @@ function ShortenURL() {
               className='option-input'
               required
             />
+          </div>
+          <div className='option-group'>
+            <label htmlFor="oneTime">
+              <input
+                type="checkbox"
+                id="oneTime"
+                checked={oneTimeClick}
+                onChange={(e) => setOneTimeClick(e.target.checked)}
+                className='checkbox-input'
+              />
+              One-time click only
+            </label>
           </div>
         </div>
         {error && <p className="error-message">{error}</p>}

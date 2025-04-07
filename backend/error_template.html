@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChibiLink - Error</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        .error-container {
+            max-width: 600px;
+            min-width: 280px;
+            width: 90%;
+            margin-top: 200px;
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 { 
+            color: #f25278;
+            margin-top: 0;
+            font-size: 24px;
+        }
+        p { 
+            color: #666;
+            margin: 15px 0;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        
+
+        @media (max-width: 480px) {
+            .error-container {
+                width: 100%;
+                min-width: auto;
+                margin-top: 50px;
+                padding: 20px 15px;
+            }
+            h1 {
+                font-size: 20px;
+            }
+            p {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <h1>{title}</h1>
+        <p>{message}</p>
+    </div>
+</body>
+</html>

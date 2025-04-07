@@ -10,6 +10,7 @@
 
 body { 
   background-color: var(--bg-color);
+  margin: 0;
 }
 body::-webkit-scrollbar {
   display: none;

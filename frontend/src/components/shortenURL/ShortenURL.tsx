@@ -11,6 +11,12 @@ function ShortenURL() {
   const [urlLength, setUrlLength] = useState(6)
   const [error, setError] = useState('')
 
+  // Format current date to ISO string and remove seconds/milliseconds
+  const getCurrentDateTime = () => {
+    const now = new Date()
+    return now.toISOString().slice(0, 16)
+  }
+
   const handleShorten = async () => {
     // Reset error state
     setError('')
@@ -85,6 +91,7 @@ function ShortenURL() {
               type="datetime-local"
               id="expiration"
               value={expirationDate}
+              min={getCurrentDateTime()}
               onChange={(e) => setExpirationDate(e.target.value)}
               className='option-input'
               required

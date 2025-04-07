@@ -2,10 +2,10 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 import os 
 from dotenv import load_dotenv
-from .logger import logger
+from backend.logger import logger
 import contextlib
-from . import utils
-import models 
+from backend import utils
+from backend import models 
 from datetime import datetime
 load_dotenv()
 

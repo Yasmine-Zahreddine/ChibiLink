@@ -1,9 +1,9 @@
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
-from . import database
+from backend import database
 from datetime import datetime, timezone
-import security
+from backend import security
 
 app = FastAPI()
 rate_limiter = security.RateLimiter(max_requests=5, window=60)

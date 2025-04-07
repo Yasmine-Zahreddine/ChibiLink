@@ -10,7 +10,9 @@ from datetime import datetime
 load_dotenv()
 
 DB_PASS = os.getenv("DB_PASS")
-DB_URl = f"postgresql://postgres.beiomutcvymyddmivtjr:{DB_PASS}@aws-0-eu-central-1.pooler.supabase.com:5432/postgres"
+DB_USER = os.getenv("DB_USER")
+DB_HOST = os.getenv("DB_HOST")
+DB_URl = f"postgresql://{DB_USER}:{DB_PASS}@{DB_HOST}:5432/postgres"
 
 engine = create_engine(DB_URl, pool_size=0)
 Session = scoped_session(sessionmaker(bind=engine))

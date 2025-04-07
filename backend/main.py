@@ -1,6 +1,5 @@
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-import models
 from fastapi.responses import RedirectResponse
 import database
 from datetime import datetime, timezone

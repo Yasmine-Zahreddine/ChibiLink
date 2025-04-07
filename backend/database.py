@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 import os 
 from dotenv import load_dotenv
-from logger import logger
+from .logger import logger
 import contextlib
 import utils
 import models 

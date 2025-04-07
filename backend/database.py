@@ -76,8 +76,6 @@ def get_original_url(short_code: str, mainCall: bool = True):
     with session_manager(mainCall) as session:
         url_entry = session.query(models.ChibiLinkURLS).filter(models.ChibiLinkURLS.short_code == short_code).first()
         if url_entry:
-            if url_entry.one_time_click:
-                session.delete(url_entry)
             return url_entry
         else:
             logger.info(f"Short code not found: {short_code}")

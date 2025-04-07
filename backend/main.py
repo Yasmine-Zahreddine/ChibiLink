@@ -47,7 +47,6 @@ def redirect_to_original_url(short_code: str):
     if url_obj.one_time_click and url_obj.clicks > 0:
         database.delete_url_entry(url_pk=url_obj.url_pk)
         return {"error": 'URL expired'}
-    print(f"url obj pk : {url_obj.url_pk}")
     url_obj = database.add_url_click(url_obj.url_pk)
     return RedirectResponse(url_obj.original_url, status_code=307)
 

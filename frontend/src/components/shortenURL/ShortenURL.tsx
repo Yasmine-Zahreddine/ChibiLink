@@ -30,7 +30,7 @@ function ShortenURL() {
     }
 
     try {
-      const response = await fetch(`${import.meta.env.BACKEND_API_URL}/shorten`, {
+      const response = await fetch(`${import.meta.env.VITE_BASE_URL}/shorten`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -4,7 +4,7 @@ import os
 from dotenv import load_dotenv
 from .logger import logger
 import contextlib
-import utils
+from . import utils
 import models 
 from datetime import datetime
 load_dotenv()

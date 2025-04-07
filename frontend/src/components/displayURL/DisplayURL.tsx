@@ -20,7 +20,10 @@ const DisplayURL = ({ shortenedURL }: DisplayURLProps) => {
   };
 
   return (
-    <div className="display-url">
+    <div 
+      className="display-url" 
+      key={shortenedURL || 'empty'}
+    >
       <div className="url-container">
         <p className="url-label">Here's your Chibi Link</p>
         <p className="shortened-url">{shortenedURL}</p>

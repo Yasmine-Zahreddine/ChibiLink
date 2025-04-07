@@ -94,10 +94,13 @@ def delete_url_entry(url_pk:str):
 
 def add_url_click(url_pk:str):
     with session_manager() as session: 
-        url_entry = session.query(models.ChibiLinkURLS).filter(models.ChibiLinkURLS.url_pk == url_pk).first()
-        if url_entry: 
-            url_entry.clicks += 1
-            session.add(url_entry)
-            session.commit()
-            return url_entry
+        try:
+            url_entry = session.query(models.ChibiLinkURLS).filter(models.ChibiLinkURLS.url_pk == url_pk).first()
+            if url_entry: 
+                url_entry.clicks += 1
+                session.add(url_entry)
+                session.commit()
+                return url_entry
+        except Exception as e:
+            logger.error(f"Error in add_url_click: {e}")
         return None

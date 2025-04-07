@@ -12,6 +12,7 @@
   border-radius: 10px;
   border: 2px solid var(--title-color);
   box-shadow: 0 2px 4px rgba(242, 82, 120, 0.1);
+  transition: all 0.3s ease-in-out;
 }
 
 .url-container {
